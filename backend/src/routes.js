@@ -88,10 +88,16 @@ router.get('/movies', async (req, res) => {
         throw new Error('Erro ao buscar filmes.')
       }
 
+      function getSupabaseImageUrl(image) {
+        const { data } = supabase.storage.from('images').getPublicUrl(image)
+        return data.publicUrl
+      }
+
       res.json(
         movies.map((movie) => ({
           ...movie,
           watched: arrayUserMoviesWatchedIds.includes(movie.id),
+          cover: getSupabaseImageUrl(movie.cover),
         }))
       )
     }

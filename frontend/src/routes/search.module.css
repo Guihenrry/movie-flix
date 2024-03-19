@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 32px;
+}
+
+.searchForm {
+  max-width: 400px;
+  position: relative;
+}
+
+.searchForm svg {
+  pointer-events: none;
+  color: #67686D;
+  position: absolute;
+  top: 12.5px;
+  right: 12.5px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 24px;
+  }
+
+  .searchForm {
+    max-width: 100%;
+  }
+}

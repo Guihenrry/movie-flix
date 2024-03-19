@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import HeaderMobile from '../components/header-mobile'
 import Input from '../components/input'
+import toast from 'react-hot-toast'
 
 import { useAuth } from '../hooks/useAuth'
 import api from '../services/api'
@@ -15,23 +16,35 @@ export default function Indicate() {
   const [gender, setGender] = useState('')
   const [description, setDescription] = useState('')
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
 
-    api.post(
-      '/movies/indicate',
-      {
-        title,
-        year,
-        gender,
-        description,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    try {
+      await api.post(
+        '/movies/indicate',
+        {
+          title,
+          year,
+          gender,
+          description,
         },
-      }
-    )
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      setTitle('')
+      setYear('')
+      setGender('')
+      setDescription('')
+
+      toast.success('Indicação enviada')
+    } catch (error) {
+      toast.error('Error ao enviar indicação')
+      console.error(error)
+    }
   }
 
   return (
