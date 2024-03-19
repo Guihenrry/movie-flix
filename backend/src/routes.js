@@ -1,7 +1,15 @@
 const express = require('express')
 const supabase = require('./supabase')
+const { name, version } = require('../package.json')
 
 const router = express.Router()
+
+router.get('/', (req, res) => {
+  return res.json({
+    application: name,
+    version: version,
+  })
+})
 
 router.post('/signin', async (req, res) => {
   try {
