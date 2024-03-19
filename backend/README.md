@@ -10,7 +10,7 @@ npm install
 cp .env.example .env
 ```
 
-### 3 - Por fim, execute o projeto na porta 3333
+### 3 - Por fim, execute o projeto na porta 3000
 
 ```
 npm run dev
