@@ -39,7 +39,7 @@ MovieFlix é a sua plataforma definitiva para descobrir e organizar seus filmes 
 
 ### Video do funcionamento da aplicação
 
-https://www.loom.com/share/c18b8538e4354e6f84a7d94aa97e8444?sid=068dbbd1-74f7-4ff4-b964-17196c646214
+https://www.loom.com/share/0bc470e7b48543ac84561117995193dc?sid=495731f2-102a-4d6e-8bd8-d6b2570f1f73
 
 ## Como utilizar
 
