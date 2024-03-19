@@ -1,0 +1,20 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.content {
+  max-height: 100vh;
+  overflow-y: auto
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .content{
+    height: calc(100vh - 80px);
+  }
+}

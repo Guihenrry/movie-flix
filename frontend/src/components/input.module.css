@@ -1,0 +1,16 @@
+.input {
+  width: 100%;
+  padding: 12px 24px;
+  background: #2E2E2E;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+
+.input::placeholder {
+  color: #67686D;
+  opacity: 1;
+}

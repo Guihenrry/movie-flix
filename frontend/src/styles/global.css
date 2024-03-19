@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #09090B;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+}
+
+button, input {
+  font-family: "Poppins", sans-serif;
+
+}
