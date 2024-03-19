@@ -19,6 +19,7 @@
 
 .info {
   display: flex;
+  align-items: center;
   gap: 4px;
   font-size: 12px;
 }
@@ -36,6 +37,7 @@
   background: none;
   border: none;
   color: white;
+  cursor: pointer;
 }
 
 .markButton:hover {

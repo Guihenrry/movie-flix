@@ -65,7 +65,7 @@ export default function Search() {
       {!isLoading && !movies.length && <NotFound />}
 
       {!isLoading && !!movies.length && (
-        <div>
+        <div className={styles.list}>
           {movies.map((movie) => (
             <Movie
               key={movie.id}

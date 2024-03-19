@@ -17,10 +17,10 @@ export default function Movie({
         <div>
           <h3 className={styles.title}>{title}</h3>
           <div className={styles.info}>
-            <Ticket /> {gender}
+            <Ticket width={16} height={16} /> {gender}
           </div>
           <div className={styles.info}>
-            <Calendar />
+            <Calendar width={16} height={16} />
             {year}
           </div>
         </div>

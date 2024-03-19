@@ -15,6 +15,25 @@
   right: 12.5px;
 }
 
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding: 32px 0;
+}
+
+@media (max-width: 1400px) {
+  .list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .wrapper {
     padding: 24px;
@@ -22,5 +41,11 @@
 
   .searchForm {
     max-width: 100%;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 0;
   }
 }

@@ -4,6 +4,11 @@ const { name, version } = require('../package.json')
 
 const router = express.Router()
 
+function getSupabaseImageUrl(image) {
+  const { data } = supabase.storage.from('images').getPublicUrl(image)
+  return data.publicUrl
+}
+
 router.get('/', (req, res) => {
   return res.json({
     application: name,
@@ -78,7 +83,13 @@ router.get('/movies', async (req, res) => {
       }
 
       movies = filteredMovies
-      res.json(movies)
+      res.json(
+        movies.map((movie) => ({
+          ...movie,
+          watched: arrayUserMoviesWatchedIds.includes(movie.id),
+          cover: getSupabaseImageUrl(movie.cover),
+        }))
+      )
     } else {
       const { data: movies, error: fetchError } = await supabase
         .from('movies')
@@ -86,11 +97,6 @@ router.get('/movies', async (req, res) => {
 
       if (fetchError) {
         throw new Error('Erro ao buscar filmes.')
-      }
-
-      function getSupabaseImageUrl(image) {
-        const { data } = supabase.storage.from('images').getPublicUrl(image)
-        return data.publicUrl
       }
 
       res.json(
