@@ -24,6 +24,58 @@ export default function Search() {
     setSearch(input)
   }
 
+  function setMovieWatchedById(watched, id) {
+    setMovies((state) =>
+      state.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            watched,
+          }
+        }
+        return item
+      })
+    )
+  }
+
+  async function handleToggleWatchedStatus(movie) {
+    if (movie.watched) {
+      try {
+        setMovieWatchedById(false, movie.id)
+        await api.post(
+          `/movies/${movie.id}/unwatched`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        toast.success('Filme removido da lista de assistidos')
+      } catch (error) {
+        setMovieWatchedById(true, movie.id)
+        toast.error('Ops ocorreu um erro ao alterar o status de assistido')
+      }
+    } else {
+      try {
+        setMovieWatchedById(true, movie.id)
+        await api.post(
+          `/movies/${movie.id}/watched`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        toast.success('Filme adicionado a lista de assistidos')
+      } catch (error) {
+        setMovieWatchedById(false, movie.id)
+        toast.error('Ops ocorreu um erro ao alterar o status de assistido')
+      }
+    }
+  }
+
   useEffect(() => {
     async function loadMovies() {
       try {
@@ -36,7 +88,6 @@ export default function Search() {
             search,
           },
         })
-        console.log(response)
         setMovies(response.data)
       } catch (error) {
         console.error(error)
@@ -74,6 +125,7 @@ export default function Search() {
               gender={movie.gender}
               year={movie.year}
               watched={movie.watched}
+              onClickMarkButton={() => handleToggleWatchedStatus(movie)}
             />
           ))}
         </div>

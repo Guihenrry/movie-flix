@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 80px 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 262px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  max-width: 252px;
+  color:#92929D;
+}
